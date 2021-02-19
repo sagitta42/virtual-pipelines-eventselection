@@ -3,7 +3,8 @@ import sys
 
 f = open('hist_ggH.root')
 print(f.name)
-print(len(f.readlines()))
+f.close()
+print('Good enough')    
 
 #f = ROOT.TFile.Open('hist_ggH.root')
 #keys = [k.GetName() for k in f.GetListOfKeys()]
