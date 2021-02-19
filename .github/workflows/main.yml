@@ -76,7 +76,7 @@ jobs:
           name: histograms
           path: hist_ggH.root
 
-  test_ggH:
+  test_log:
     needs: plot
     runs-on: ubuntu-latest
     container: rootproject/root-conda:6.18.04
@@ -88,6 +88,15 @@ jobs:
           name: skim_ggH_log
       - name: test log
         run: python tests/test_cutflow_ggH.py
+
+  test_histo:        
+    if: github.ref == 'refs/heads/bkg_dev'
+    needs: plot
+    runs-on: ubuntu-latest
+    container: rootproject/root-conda:6.18.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
           name: histograms
